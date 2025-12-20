@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>web/index.html</file>
+        <file>web/css/style.css</file>
+        <file>web/js/app.js</file>
+        <file>.env</file>
+        <file>queries.conf</file>
+    </qresource>
+</RCC>

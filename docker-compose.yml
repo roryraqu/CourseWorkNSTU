@@ -1,0 +1,26 @@
+services:
+  client:
+    image: roryraqu/tss:v1
+    
+    container_name: transport_client
+    network_mode: host
+    
+    shm_size: '2gb'
+    
+    environment:
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+      - XAUTHORITY=/tmp/.docker.xauth
+      
+      - QSG_RHI_BACKEND=software
+      - QT_QUICK_BACKEND=software
+      - LIBGL_ALWAYS_SOFTWARE=1
+
+      - QTWEBENGINE_CHROMIUM_FLAGS=--no-sandbox --disable-gpu
+
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ${XAUTHORITY:-$HOME/.Xauthority}:/tmp/.docker.xauth:ro
+
+    security_opt:
+      - seccomp:unconfined
